@@ -1,0 +1,16 @@
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+data/processed/*.csv
+data/processed/*.rds
+outputs/models/*.rds
+reports/*.pdf
+
+data/raw/*.zip
+data/raw/*.rds
+data/raw/cis_graduate_outcomes_raw.csv
+data/raw/qilt_gosl_2025_combined.csv
+data/raw/GOSL_2025_National_Report_Tables/*.xlsx
+data/raw/GOSL_2025_National_Report_Tables/*.ods

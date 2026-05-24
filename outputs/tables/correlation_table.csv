@@ -1,0 +1,9 @@
+"","short_term_full_time_employment_rate","medium_term_full_time_employment_rate","short_term_overall_employment_rate","medium_term_overall_employment_rate","short_term_median_salary_aud","medium_term_median_salary_aud","salary_growth","gender_pay_gap"
+"short_term_full_time_employment_rate",1,0.8605,0.6943,0.8563,0.3069,0.5793,0.5694,0.427
+"medium_term_full_time_employment_rate",0.8605,1,0.6809,0.8558,0.3266,0.5875,0.5624,0.5209
+"short_term_overall_employment_rate",0.6943,0.6809,1,0.6553,0.0151,0.2401,0.3467,0.273
+"medium_term_overall_employment_rate",0.8563,0.8558,0.6553,1,0.4757,0.5307,0.3297,0.2298
+"short_term_median_salary_aud",0.3069,0.3266,0.0151,0.4757,1,0.7543,0.149,0.1838
+"medium_term_median_salary_aud",0.5793,0.5875,0.2401,0.5307,0.7543,1,0.7616,0.2399
+"salary_growth",0.5694,0.5624,0.3467,0.3297,0.149,0.7616,1,0.2236
+"gender_pay_gap",0.427,0.5209,0.273,0.2298,0.1838,0.2399,0.2236,1
