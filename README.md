@@ -15,6 +15,7 @@
 - Data quality report: [docs/data_quality_report.md](docs/data_quality_report.md)
 - SQL analysis queries: [sql/analysis_queries.sql](sql/analysis_queries.sql)
 - SQLite database guide: [database/README.md](database/README.md)
+- Python notebook: [notebooks/qilt_employment_analysis.ipynb](notebooks/qilt_employment_analysis.ipynb)
 - Interview talking points: [docs/interview_talking_points.md](docs/interview_talking_points.md)
 - Resume project description: [docs/resume_bullets.md](docs/resume_bullets.md)
 
@@ -93,6 +94,8 @@ QILT GOS-L reports graduate outcomes around three years after course completion.
 │   └── resume_bullets.md
 ├── sql
 │   └── analysis_queries.sql
+├── notebooks
+│   └── qilt_employment_analysis.ipynb
 ├── reports
 │   ├── australia_graduate_employment_report.Rmd
 │   └── australia_graduate_employment_report.html
@@ -131,6 +134,7 @@ Rscript run_analysis.R
 - Resume project description: `docs/resume_bullets.md`
 - SQL portfolio queries: `sql/analysis_queries.sql`
 - SQLite database: `database/qilt_employment.db`
+- Python notebook: `notebooks/qilt_employment_analysis.ipynb`
 - Dashboard preview: `outputs/figures/portfolio_dashboard.png`
 - Charts: `outputs/figures/`
 - Summary tables: `outputs/tables/`
