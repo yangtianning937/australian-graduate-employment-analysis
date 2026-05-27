@@ -16,6 +16,7 @@
 - SQL analysis queries: [sql/analysis_queries.sql](sql/analysis_queries.sql)
 - SQLite database guide: [database/README.md](database/README.md)
 - Interview talking points: [docs/interview_talking_points.md](docs/interview_talking_points.md)
+- Resume project description: [docs/resume_bullets.md](docs/resume_bullets.md)
 
 ## Project Highlights
 
@@ -88,7 +89,8 @@ QILT GOS-L reports graduate outcomes around three years after course completion.
 │   ├── data_quality_report.md
 │   ├── executive_summary.md
 │   ├── methodology.md
-│   └── interview_talking_points.md
+│   ├── interview_talking_points.md
+│   └── resume_bullets.md
 ├── sql
 │   └── analysis_queries.sql
 ├── reports
@@ -126,6 +128,7 @@ Rscript run_analysis.R
 - Data quality report: `docs/data_quality_report.md`
 - Methodology: `docs/methodology.md`
 - Interview talking points: `docs/interview_talking_points.md`
+- Resume project description: `docs/resume_bullets.md`
 - SQL portfolio queries: `sql/analysis_queries.sql`
 - SQLite database: `database/qilt_employment.db`
 - Dashboard preview: `outputs/figures/portfolio_dashboard.png`
