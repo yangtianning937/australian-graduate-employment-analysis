@@ -4,11 +4,24 @@
 
 这个项目定位为一个 **Data Analyst Portfolio Project**，展示从真实公开数据获取、Excel 多表提取、数据清洗、特征工程、可视化、探索性建模到 HTML 报告输出的完整流程。
 
+![Portfolio dashboard preview](outputs/figures/portfolio_dashboard.png)
+
+## Portfolio Links
+
+- Final HTML report: [reports/australia_graduate_employment_report.html](reports/australia_graduate_employment_report.html)
+- Executive summary: [docs/executive_summary.md](docs/executive_summary.md)
+- Data dictionary: [docs/data_dictionary.md](docs/data_dictionary.md)
+- Methodology: [docs/methodology.md](docs/methodology.md)
+- SQL analysis queries: [sql/analysis_queries.sql](sql/analysis_queries.sql)
+- Interview talking points: [docs/interview_talking_points.md](docs/interview_talking_points.md)
+
 ## Project Highlights
 
 - 使用 QILT 官方公开数据，而不是模拟数据
 - 使用 Python 从多 sheet Excel 报告中提取整洁 CSV
 - 使用 R 完成数据清洗、特征工程、可视化和建模
+- 使用 SQL 查询展示 KPI、排名、薪资差距和大学表现分析思路
+- 生成作品集风格 dashboard 预览图
 - 输出可复现 HTML 报告和分析图表
 - 聚焦业务问题：就业表现、薪资结果、性别薪资差距、大学层面差异
 
@@ -50,6 +63,7 @@ QILT GOS-L reports graduate outcomes around three years after course completion.
 - R: data cleaning, analysis, modelling, charts
 - rpart: decision tree model
 - stats: linear regression model
+- SQL: portfolio-style analytical queries
 - rmarkdown / knitr: HTML report generation
 - Git / GitHub: version control and portfolio publishing
 
@@ -70,7 +84,10 @@ QILT GOS-L reports graduate outcomes around three years after course completion.
 │   ├── data_sources.md
 │   ├── data_dictionary.md
 │   ├── executive_summary.md
-│   └── methodology.md
+│   ├── methodology.md
+│   └── interview_talking_points.md
+├── sql
+│   └── analysis_queries.sql
 ├── reports
 │   ├── australia_graduate_employment_report.Rmd
 │   └── australia_graduate_employment_report.html
@@ -104,6 +121,9 @@ Rscript run_analysis.R
 - Executive summary: `docs/executive_summary.md`
 - Data dictionary: `docs/data_dictionary.md`
 - Methodology: `docs/methodology.md`
+- Interview talking points: `docs/interview_talking_points.md`
+- SQL portfolio queries: `sql/analysis_queries.sql`
+- Dashboard preview: `outputs/figures/portfolio_dashboard.png`
 - Charts: `outputs/figures/`
 - Summary tables: `outputs/tables/`
 - Models: `outputs/models/`
@@ -119,4 +139,3 @@ Rscript run_analysis.R
 ## Notes
 
 The QILT public workbook provides aggregated report tables rather than person-level survey records. Therefore, this project focuses on descriptive analytics, benchmarking, salary gap analysis, and exploratory modelling. It should not be interpreted as individual-level causal analysis.
-
