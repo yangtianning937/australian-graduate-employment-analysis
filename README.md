@@ -13,6 +13,7 @@
 - Data dictionary: [docs/data_dictionary.md](docs/data_dictionary.md)
 - Methodology: [docs/methodology.md](docs/methodology.md)
 - SQL analysis queries: [sql/analysis_queries.sql](sql/analysis_queries.sql)
+- SQLite database guide: [database/README.md](database/README.md)
 - Interview talking points: [docs/interview_talking_points.md](docs/interview_talking_points.md)
 
 ## Project Highlights
@@ -123,6 +124,7 @@ Rscript run_analysis.R
 - Methodology: `docs/methodology.md`
 - Interview talking points: `docs/interview_talking_points.md`
 - SQL portfolio queries: `sql/analysis_queries.sql`
+- SQLite database: `database/qilt_employment.db`
 - Dashboard preview: `outputs/figures/portfolio_dashboard.png`
 - Charts: `outputs/figures/`
 - Summary tables: `outputs/tables/`
