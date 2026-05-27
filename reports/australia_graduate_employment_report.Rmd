@@ -1,6 +1,6 @@
 ---
 title: "Computing and Information Systems Graduates: Employment Outcomes Analysis"
-author: "Student Project"
+author: "Data Analysis Portfolio Project"
 date: "`r Sys.Date()`"
 output:
   html_document:
@@ -31,7 +31,35 @@ cis_data <- data[data$is_cis == "Yes", ]
 
 This project analyses Australian Computing and Information Systems (CIS) graduate outcomes using real public summary data from the QILT Graduate Outcomes Survey - Longitudinal (GOS-L) 2025 National Report Tables.
 
-The original project document focused on CIS graduate employment, salary outcomes, gender pay gaps, and institutional differences. This version keeps the same topic, but uses the latest public QILT summary tables that were available during project development.
+The analysis is designed as a data analyst portfolio project. It focuses on practical questions that a university, student advisor, or education policy team might ask: how strong are CIS graduate outcomes, how do they compare with other study areas, and where are salary gaps still visible?
+
+### Key Metrics
+
+```{r key-metrics}
+key_metrics <- data.frame(
+  Metric = c(
+    "Medium-term full-time employment rate",
+    "Medium-term overall employment rate",
+    "Short-term median salary",
+    "Medium-term median salary",
+    "Salary growth",
+    "Male medium-term median salary",
+    "Female medium-term median salary",
+    "Gender pay gap"
+  ),
+  Result = c(
+    paste0(cis_data$medium_term_full_time_employment_rate, "%"),
+    paste0(cis_data$medium_term_overall_employment_rate, "%"),
+    paste0("AUD ", format(cis_data$short_term_median_salary_aud, big.mark = ",")),
+    paste0("AUD ", format(cis_data$medium_term_median_salary_aud, big.mark = ",")),
+    paste0("AUD ", format(cis_data$salary_growth, big.mark = ",")),
+    paste0("AUD ", format(cis_data$male_medium_salary_aud, big.mark = ",")),
+    paste0("AUD ", format(cis_data$female_medium_salary_aud, big.mark = ",")),
+    paste0(round(cis_data$gender_pay_gap * 100, 1), "%")
+  )
+)
+key_metrics
+```
 
 ### Research Questions
 
@@ -61,6 +89,8 @@ Data checking included:
 - calculating short-term to medium-term employment and salary growth;
 - calculating gender pay gap by study area.
 
+This workflow turns a multi-sheet public Excel report into analysis-ready CSV files, which makes the project easier to reproduce and review.
+
 ```{r data-overview}
 overview <- data.frame(
   study_areas = nrow(data),
@@ -74,8 +104,16 @@ overview
 
 ## 3. Employment Outcomes
 
+### 3.1 Full-time Employment
+
 ```{r employment-plot, fig.width=9, fig.height=5}
 knitr::include_graphics("../outputs/figures/employment_rate_by_field_year.png")
+```
+
+### 3.2 Overall Employment
+
+```{r overall-employment-plot, fig.width=9, fig.height=5}
+knitr::include_graphics("../outputs/figures/overall_employment_by_field.png")
 ```
 
 ```{r cis-table}
@@ -84,7 +122,29 @@ cis_data
 
 The QILT 2025 data shows that CIS undergraduates had a medium-term full-time employment rate of `r cis_data$medium_term_full_time_employment_rate`% and a medium-term overall employment rate of `r cis_data$medium_term_overall_employment_rate`%. Their medium-term median salary was `r format(cis_data$medium_term_median_salary_aud, big.mark = ",")` AUD.
 
-## 4. Gender Pay Gap
+## 4. Salary Outcomes
+
+### 4.1 Medium-term Median Salary
+
+```{r salary-by-field-plot, fig.width=9, fig.height=5}
+knitr::include_graphics("../outputs/figures/salary_by_field.png")
+```
+
+### 4.2 Salary Growth
+
+```{r salary-growth-plot, fig.width=9, fig.height=5}
+knitr::include_graphics("../outputs/figures/salary_growth_by_field.png")
+```
+
+### 4.3 Employment and Salary Relationship
+
+```{r employment-salary-scatter, fig.width=8, fig.height=5}
+knitr::include_graphics("../outputs/figures/employment_salary_scatter.png")
+```
+
+These salary charts show how CIS compares with other study areas. CIS has both strong medium-term employment and a high medium-term median salary, which makes it one of the stronger outcomes in the QILT summary data.
+
+## 5. Gender Pay Gap
 
 The gender pay gap is calculated as:
 
@@ -102,7 +162,15 @@ gender_pay_gap_by_field[gender_pay_gap_by_field$field_of_education == "Computing
 
 For CIS, male graduates had a medium-term median salary of `r format(cis_data$male_medium_salary_aud, big.mark = ",")` AUD, while female graduates had a medium-term median salary of `r format(cis_data$female_medium_salary_aud, big.mark = ",")` AUD. The calculated CIS gender pay gap is about `r round(cis_data$gender_pay_gap * 100, 1)`%.
 
-## 5. Institutional Outcomes
+### 5.1 STEM-related Gender Pay Gap
+
+```{r stem-gender-gap-plot, fig.width=8, fig.height=5}
+knitr::include_graphics("../outputs/figures/stem_gender_pay_gap.png")
+```
+
+The STEM-related comparison helps show whether the CIS gender pay gap is unusual or part of a wider STEM pattern. This is useful because the original project topic also discusses gender differences in technology-related fields.
+
+## 6. Institutional Outcomes
 
 ```{r institution-plot, fig.width=9, fig.height=5}
 knitr::include_graphics("../outputs/figures/regional_salary_employment.png")
@@ -114,12 +182,14 @@ head(institutional_summary, 10)
 
 The institutional table compares universities by medium-term full-time employment rate and median salary. Since the public workbook provides university-level summary values, this section focuses on descriptive comparison rather than individual-level modelling.
 
-## 6. Modelling
+## 7. Modelling
 
 This project uses two simple models:
 
 - linear regression to explain medium-term median salary across study areas;
 - decision tree to classify whether a study area has above-median medium-term salary.
+
+These models are exploratory. They are used to understand relationships in aggregated data, not to predict individual graduate outcomes.
 
 ```{r model-comparison}
 model_comparison
@@ -147,7 +217,7 @@ knitr::include_graphics("../outputs/figures/feature_importance.png")
 feature_importance
 ```
 
-## 7. Correlation Analysis
+## 8. Correlation Analysis
 
 ```{r correlation-table}
 correlation_table
@@ -155,7 +225,7 @@ correlation_table
 
 The correlation table shows relationships between employment rates, salary growth, median salary, and gender pay gap across study areas.
 
-## 8. Conclusion
+## 9. Conclusion
 
 Using real QILT GOS-L 2025 public summary data, CIS graduates show strong medium-term employment and salary outcomes. CIS has a medium-term full-time employment rate above 90% and a median salary of 100,000 AUD, which places it among the stronger study areas in the dataset.
 
@@ -163,15 +233,14 @@ The gender pay gap remains visible. In CIS, the male medium-term median salary i
 
 The university-level tables show that several institutions report strong medium-term employment and salary outcomes. However, because the public data is aggregated, the results should be interpreted as descriptive findings rather than individual-level causal evidence.
 
-## 9. Limitations
+## 10. Limitations
 
 This project uses official public summary tables, not confidential person-level survey records. Because of this, the project cannot model individual graduate outcomes such as personal GPA, internship history, or job search behaviour. The analysis is still useful for comparing study areas and institutions, but it should not be presented as a causal analysis.
 
-## 10. References
+## 11. References
 
 Quality Indicators for Learning and Teaching. (2025). Graduate Outcomes Survey - Longitudinal National Report Tables.
 
 Quality Indicators for Learning and Teaching. Graduate Outcomes Survey - Longitudinal. https://qilt.edu.au/surveys/graduate-outcomes-survey---longitudinal-%28gos-l%29
 
 R Core Team. R: A language and environment for statistical computing.
-
