@@ -1,5 +1,7 @@
 # Australian Graduate Employment Outcomes Analysis
 
+[![Project health check](https://github.com/yangtianning937/australian-graduate-employment-analysis/actions/workflows/project-check.yml/badge.svg)](https://github.com/yangtianning937/australian-graduate-employment-analysis/actions/workflows/project-check.yml)
+
 基于 QILT Graduate Outcomes Survey - Longitudinal (GOS-L) 2025 官方公开数据，分析澳洲毕业生就业率、薪资中位数、薪资增长和性别薪资差距，并重点关注 Computing and Information Systems (CIS) 专业毕业生表现。
 
 这个项目定位为一个 **Data Analyst Portfolio Project**，展示从真实公开数据获取、Excel 多表提取、数据清洗、特征工程、可视化、探索性建模到 HTML 报告输出的完整流程。
@@ -27,6 +29,7 @@
 - 使用 R 完成数据清洗、特征工程、可视化和建模
 - 使用 SQL 查询展示 KPI、排名、薪资差距和大学表现分析思路
 - 生成作品集风格 dashboard 预览图
+- 使用 GitHub Actions 自动检查关键文件、Notebook、SQLite 数据库和核心 KPI
 - 输出可复现 HTML 报告和分析图表
 - 聚焦业务问题：就业表现、薪资结果、性别薪资差距、大学层面差异
 

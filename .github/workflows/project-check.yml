@@ -1,0 +1,27 @@
+name: Project health check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Rebuild SQLite database
+        run: python scripts/load_to_sqlite.py
+
+      - name: Run project health check
+        run: python scripts/project_health_check.py
+

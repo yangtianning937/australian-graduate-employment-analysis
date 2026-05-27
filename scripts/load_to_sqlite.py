@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DB_PATH = ROOT / "database/qilt_employment.db"
 
 TABLES = {
-    "qilt_area_features": ROOT / "data/processed/qilt_gosl_2025_area_features.csv",
+    "qilt_area_features": ROOT / "outputs/tables/employment_by_field_year.csv",
     "qilt_institutional_summary": ROOT / "outputs/tables/institutional_summary.csv",
 }
 
