@@ -8,6 +8,7 @@
 
 ## Portfolio Links
 
+- GitHub Pages site: https://yangtianning937.github.io/australian-graduate-employment-analysis/
 - Final HTML report: [reports/australia_graduate_employment_report.html](reports/australia_graduate_employment_report.html)
 - Executive summary: [docs/executive_summary.md](docs/executive_summary.md)
 - Data dictionary: [docs/data_dictionary.md](docs/data_dictionary.md)
