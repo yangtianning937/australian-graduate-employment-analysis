@@ -19,12 +19,14 @@ source("R/01_clean_data.R")
 source("R/02_feature_engineering.R")
 source("R/03_modeling.R")
 source("R/04_create_dashboard.R")
+source("R/05_data_quality_checks.R")
 
 generate_sample_data()
 clean_employment_data()
 create_employment_features()
 train_employment_models()
 create_portfolio_dashboard()
+run_data_quality_checks()
 
 if (!rmarkdown::pandoc_available()) {
   rstudio_pandoc_paths <- c(

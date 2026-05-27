@@ -12,6 +12,7 @@
 - Executive summary: [docs/executive_summary.md](docs/executive_summary.md)
 - Data dictionary: [docs/data_dictionary.md](docs/data_dictionary.md)
 - Methodology: [docs/methodology.md](docs/methodology.md)
+- Data quality report: [docs/data_quality_report.md](docs/data_quality_report.md)
 - SQL analysis queries: [sql/analysis_queries.sql](sql/analysis_queries.sql)
 - SQLite database guide: [database/README.md](database/README.md)
 - Interview talking points: [docs/interview_talking_points.md](docs/interview_talking_points.md)
@@ -84,6 +85,7 @@ QILT GOS-L reports graduate outcomes around three years after course completion.
 ├── docs
 │   ├── data_sources.md
 │   ├── data_dictionary.md
+│   ├── data_quality_report.md
 │   ├── executive_summary.md
 │   ├── methodology.md
 │   └── interview_talking_points.md
@@ -121,6 +123,7 @@ Rscript run_analysis.R
 - Final report: `reports/australia_graduate_employment_report.html`
 - Executive summary: `docs/executive_summary.md`
 - Data dictionary: `docs/data_dictionary.md`
+- Data quality report: `docs/data_quality_report.md`
 - Methodology: `docs/methodology.md`
 - Interview talking points: `docs/interview_talking_points.md`
 - SQL portfolio queries: `sql/analysis_queries.sql`
