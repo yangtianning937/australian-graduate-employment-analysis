@@ -117,6 +117,7 @@ train_employment_models <- function(
 
   png("outputs/figures/employment_rate_by_field_year.png", width = 1100, height = 700)
   ordered <- area_data[order(area_data$medium_term_full_time_employment_rate), ]
+  par(mar = c(5, 14, 4, 2))
   barplot(
     ordered$medium_term_full_time_employment_rate,
     names.arg = ordered$field_of_education,
@@ -129,8 +130,82 @@ train_employment_models <- function(
   )
   dev.off()
 
+  png("outputs/figures/overall_employment_by_field.png", width = 1100, height = 700)
+  ordered_overall <- area_data[order(area_data$medium_term_overall_employment_rate), ]
+  par(mar = c(5, 14, 4, 2))
+  barplot(
+    ordered_overall$medium_term_overall_employment_rate,
+    names.arg = ordered_overall$field_of_education,
+    horiz = TRUE,
+    las = 1,
+    col = ifelse(ordered_overall$is_cis == "Yes", "#2f6f73", "#9fb8b2"),
+    main = "QILT GOS-L 2025: Medium-term Overall Employment by Study Area",
+    xlab = "Overall employment rate (%)",
+    cex.names = 0.65
+  )
+  dev.off()
+
+  png("outputs/figures/salary_by_field.png", width = 1100, height = 700)
+  salary_ordered <- area_data[order(area_data$medium_term_median_salary_aud), ]
+  par(mar = c(5, 14, 4, 2))
+  barplot(
+    salary_ordered$medium_term_median_salary_aud,
+    names.arg = salary_ordered$field_of_education,
+    horiz = TRUE,
+    las = 1,
+    col = ifelse(salary_ordered$is_cis == "Yes", "#2f6f73", "#c3a15f"),
+    main = "QILT GOS-L 2025: Medium-term Median Salary by Study Area",
+    xlab = "Median salary (AUD)",
+    cex.names = 0.65
+  )
+  dev.off()
+
+  png("outputs/figures/salary_growth_by_field.png", width = 1100, height = 700)
+  growth_ordered <- area_data[order(area_data$salary_growth), ]
+  par(mar = c(5, 14, 4, 2))
+  barplot(
+    growth_ordered$salary_growth,
+    names.arg = growth_ordered$field_of_education,
+    horiz = TRUE,
+    las = 1,
+    col = ifelse(growth_ordered$is_cis == "Yes", "#2f6f73", "#8f9f6f"),
+    main = "QILT GOS-L 2025: Salary Growth from Short-term to Medium-term",
+    xlab = "Salary growth (AUD)",
+    cex.names = 0.65
+  )
+  dev.off()
+
+  png("outputs/figures/employment_salary_scatter.png", width = 950, height = 650)
+  point_colours <- ifelse(area_data$is_cis == "Yes", "#c4513b", ifelse(area_data$is_stem_related == "Yes", "#2f6f73", "#8aa6a3"))
+  par(mar = c(5, 5, 4, 2))
+  plot(
+    area_data$medium_term_full_time_employment_rate,
+    area_data$medium_term_median_salary_aud,
+    pch = 19,
+    col = point_colours,
+    xlab = "Medium-term full-time employment rate (%)",
+    ylab = "Medium-term median salary (AUD)",
+    main = "Employment Rate and Salary by Study Area"
+  )
+  text(
+    area_data$medium_term_full_time_employment_rate,
+    area_data$medium_term_median_salary_aud,
+    labels = ifelse(area_data$is_cis == "Yes", "CIS", ""),
+    pos = 4,
+    col = "#c4513b"
+  )
+  legend(
+    "bottomright",
+    legend = c("CIS", "STEM-related", "Other"),
+    col = c("#c4513b", "#2f6f73", "#8aa6a3"),
+    pch = 19,
+    bty = "n"
+  )
+  dev.off()
+
   png("outputs/figures/cis_gender_pay_gap.png", width = 950, height = 650)
   gap_ordered <- gender_gap[order(gender_gap$gender_pay_gap), ]
+  par(mar = c(5, 14, 4, 2))
   barplot(
     gap_ordered$gender_pay_gap * 100,
     names.arg = gap_ordered$field_of_education,
@@ -143,8 +218,31 @@ train_employment_models <- function(
   )
   dev.off()
 
+  png("outputs/figures/stem_gender_pay_gap.png", width = 950, height = 650)
+  stem_gap <- merge(
+    gender_gap,
+    area_data[, c("field_of_education", "is_stem_related", "is_cis")],
+    by = "field_of_education",
+    all.x = TRUE
+  )
+  stem_gap <- stem_gap[stem_gap$is_stem_related == "Yes", ]
+  stem_gap <- stem_gap[order(stem_gap$gender_pay_gap), ]
+  par(mar = c(5, 14, 4, 2))
+  barplot(
+    stem_gap$gender_pay_gap * 100,
+    names.arg = stem_gap$field_of_education,
+    horiz = TRUE,
+    las = 1,
+    col = ifelse(stem_gap$is_cis == "Yes", "#2f6f73", "#b7a77d"),
+    main = "QILT GOS-L 2025: Gender Pay Gap in STEM-related Study Areas",
+    xlab = "Gender pay gap (%)",
+    cex.names = 0.75
+  )
+  dev.off()
+
   png("outputs/figures/regional_salary_employment.png", width = 1000, height = 700)
   top_institutions <- head(institution_summary[order(-institution_summary$medium_term_median_salary_aud), ], 15)
+  par(mar = c(5, 14, 4, 2))
   barplot(
     rev(top_institutions$medium_term_median_salary_aud),
     names.arg = rev(top_institutions$institution),
@@ -159,6 +257,7 @@ train_employment_models <- function(
 
   png("outputs/figures/feature_importance.png", width = 900, height = 600)
   top_importance <- head(feature_importance, 8)
+  par(mar = c(5, 12, 4, 2))
   barplot(
     rev(top_importance$importance),
     names.arg = rev(top_importance$feature),
@@ -173,4 +272,3 @@ train_employment_models <- function(
 
   message("已完成 QILT 真实数据分析和建模。")
 }
-
